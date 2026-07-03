@@ -1,6 +1,6 @@
 # QuickChange - Landing Page de Conversion de Devises
 
-Bienvenue sur le dépôt du projet QuickChange, développé dans le cadre du programme de stage Full Stack Web Development ().
+Bienvenue sur le dépôt du projet QuickChange, développé dans le cadre du programme de stage Full Stack Web Development chez DecodeLabs (https://github.com/brave-aaron/quick-change.git).
 
 QuickChange est une Landing Page moderne, minimaliste et entièrement responsive qui permet aux utilisateurs de simuler des conversions monétaires instantanées (EUR, USD, XOF) et de consulter les taux du jour.
 
