@@ -1,4 +1,4 @@
-# QuickChange - Convertisseur de Devises Full-Stack
+# QuickChange - Convertisseur de Devises 
 
 QuickChange est une application web d'échange monétaire dynamique développée dans le cadre des projets de validation de **DecodeLabs**. L'application applique une architecture Full-Stack moderne permettant de connecter une interface utilisateur réactive à un serveur Node.js et une base de données relationnelle MySQL.
 
