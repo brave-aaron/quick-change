@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuickChange - Convertisseur de Devises</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="logo">Quick<span class="highlight">Change</span></div>
+        <nav class="nav-links">
+            <a href="#converter-section" class="nav-btn">Convertisseur</a>
+            <a href="#rates-section" class="nav-btn">Taux du jour</a>
+        </nav>
+    </header>
+
+    <main class="hero" id="converter-section">
+        <h1>Convertissez vos devises, en toute simplicité.</h1>
+        <p>Calculez instantanément vos conversions monétaires avec des taux mis à jour.</p>
+        
+        <div class="converter-box">
+            <div class="input-group">
+                <label for="amount">Montant</label>
+                <input type="number" id="amount" placeholder="Ex: 10000" value="100">
+            </div>
+
+            <div class="select-group">
+                <div class="control">
+                    <label for="fromCurrency">De</label>
+                    <select id="fromCurrency">
+                        <option value="EUR">EUR (€)</option>
+                        <option value="USD">USD ($)</option>
+                        <option value="XOF">XOF (CFA)</option>
+                    </select>
+                </div>
+                
+                <div class="control">
+                    <label for="toCurrency">Vers</label>
+                    <select id="toCurrency">
+                        <option value="XOF" selected>XOF (CFA)</option>
+                        <option value="EUR">EUR (€)</option>
+                        <option value="USD">USD ($)</option>
+                    </select>
+                </div>
+            </div>
+
+            <button class="btn" id="convertBtn">Convertir</button>
+            <div class="result-display" id="resultText">100 EUR = 65596 XOF</div>
+        </div>
+    </main>
+
+    <div style="text-align: center; margin: 30px auto; max-width: 400px;">
+        <button id="openHistoryBtn" style="background: #34495e; color: white; border: none; padding: 12px 24px; border-radius: 25px; font-size: 14px; cursor: pointer; font-weight: 500; transition: background 0.3s; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+            <i class="fa-solid fa-clock-rotate-left"></i> Voir l'historique des conversions
+        </button>
+    </div>
+
+    <section class="grid-container" id="rates-section">
+        <div class="card">
+            <div class="badge rate-up">Stable</div>
+            <h3>1 EUR à XOF</h3>
+            <p class="rate-value" id="rate-eur-xof"></p>
+            <p class="meta">Taux officiel fixe de la zone Euro / CFA.</p>
+        </div>
+
+        <div class="card">
+            <div class="badge rate-trend">Fluctuant</div>
+            <h3>1 USD à XOF</h3>
+            <p class="rate-value" id="rate-usd-xof"></p>
+            <p class="meta">Mis à jour récemment. Sujet aux variations du marché.</p>
+        </div>
+    </section>
+
+    <div id="historyModal" style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); backdrop-filter: blur(4px); justify-content: center; align-items: center;">
+        <div style="background: #fff; padding: 25px; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.2); width: 100%; max-width: 450px; font-family: sans-serif; position: relative; animation: fadeIn 0.3s ease-out;">
+            
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 1px solid #eee; padding-bottom: 10px;">
+                <h3 style="margin: 0; color: #333; font-size: 18px;">📜 Historique des Conversions</h3>
+                <div style="display: flex; gap: 10px; align-items: center;">
+                    <button id="clearHistoryBtn" style="background: #ff4d4d; color: white; border: none; padding: 6px 12px; border-radius: 4px; font-size: 12px; cursor: pointer; width: auto; font-weight: 500;">
+                        <i class="fa-solid fa-trash"></i> Effacer
+                    </button>
+                    <button id="closeHistoryBtn" style="background: none; border: none; font-size: 20px; color: #999; cursor: pointer; padding: 0 5px;">&times;</button>
+                </div>
+            </div>
+
+            <div style="max-height: 300px; overflow-y: auto;">
+                <table style="width: 100%; border-collapse: collapse; font-size: 14px;">
+                    <thead>
+                        <tr style="border-bottom: 2px solid #ddd; text-align: left; color: #666; position: sticky; top: 0; background: white;">
+                            <th style="padding: 8px;">Heure</th>
+                            <th style="padding: 8px;">Conversion</th>
+                            <th style="padding: 8px;">Résultat</th>
+                        </tr>
+                    </thead>
+                    <tbody id="historyTableBody"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p class="footer-author">Ketevi Mensanh Aaron</p>
+            <p class="footer-role">Développeur Full Stack - Stagiaire DecodeLabs</p>
+            <div class="footer-socials">
+                <a href="https://github.com/brave-aaron" target="_blank" title="GitHub"><i class="fa-brands fa-github"></i></a>
+                <a href="mailto:ketevimensanhaaron@gmail.com" title="Email"><i class="fa-solid fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/mensanh-aaron-ketevi-b04312356/" target="_blank" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="#" title="Portfolio"><i class="fa-solid fa-briefcase"></i></a>
+            </div>
+            <p class="footer-copyright">&copy; 2026 QuickChange - Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        #openHistoryBtn:hover { background: #2c3e50 !important; }
+    </style>
+
+    <script src="script.js"></script>
+</body>
+</html>
