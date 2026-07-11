@@ -1,0 +1,307 @@
+/* Variables et Couleurs Officielles */
+:root {
+    --mocha-mousse: #A5856F;   /* Marron chaud (Boutons et titres) */
+    --ethereal-blue: #A0D4E0;  /* Bleu doux (Bordures et accents) */
+    --moonlit-grey: #F2F0EA;   /* Fond de page minéral */
+    --dark-neutral: #2B2D42;
+}
+
+/* Reset Global */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--moonlit-grey);
+    color: var(--dark-neutral);
+    padding: 15px;
+}
+
+/* --- BARRE DE NAVIGATION RESPONSIVE --- */
+.navbar {
+    display: flex;
+    flex-direction: column; /* Par défaut sur Mobile : disposition verticale */
+    align-items: center;
+    gap: 15px;
+    padding: 15px 20px;
+    background: #ffffff;
+    border-radius: 6px;
+    border-bottom: 3px solid var(--ethereal-blue);
+}
+
+.logo {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+}
+
+.highlight {
+    color: var(--mocha-mousse);
+}
+
+.nav-links {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+}
+
+.nav-btn {
+    text-decoration: none;
+    color: var(--dark-neutral);
+    background-color: transparent;
+    border: 2px solid var(--ethereal-blue);
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: 500;
+    white-space: nowrap;
+    transition: all 0.2s ease;
+    flex: 1;
+    text-align: center;
+    max-width: 140px;
+}
+
+.nav-btn:hover {
+    background-color: var(--ethereal-blue);
+    color: var(--dark-neutral);
+}
+
+/* --- RESPONSIVE NAVIGATION : MODE ORDINATEUR --- */
+@media (min-width: 768px) {
+    .navbar {
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 0;
+    }
+
+    .nav-links {
+        width: auto;
+        justify-content: flex-end;
+    }
+
+    .nav-btn {
+        flex: none;
+        padding: 8px 16px;
+    }
+}
+
+/* Section Hero / Boîte du Convertisseur */
+.hero {
+    text-align: center;
+    padding: 40px 20px;
+    background: #ffffff;
+    margin: 20px 0;
+    border-radius: 6px;
+}
+
+.hero h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 24px;
+    margin-bottom: 12px;
+}
+
+.hero p {
+    color: #7f8c8d;
+    margin-bottom: 30px;
+}
+
+/* Le bloc formulaire */
+.converter-box {
+    max-width: 500px;
+    margin: 0 auto;
+    background: var(--moonlit-grey);
+    padding: 20px;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    text-align: left;
+}
+
+.converter-box label {
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #7f8c8d;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.converter-box input, 
+.converter-box select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    background: #ffffff;
+    color: var(--dark-neutral);
+}
+
+.select-group {
+    display: flex;
+    gap: 15px;
+}
+
+.select-group .control {
+    flex: 1;
+}
+
+.btn {
+    background-color: var(--mocha-mousse);
+    color: white;
+    border: none;
+    padding: 14px;
+    border-radius: 4px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn:hover {
+    background-color: var(--dark-neutral);
+}
+
+.result-display {
+    margin-top: 15px;
+    padding: 12px;
+    background: #ffffff;
+    border-radius: 4px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--mocha-mousse);
+    border: 1px solid var(--ethereal-blue);
+}
+
+/* Grille Responsive Taux du jour (1 colonne sur Mobile) */
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+}
+
+.card {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 6px;
+    border-top: 4px solid var(--ethereal-blue);
+    border-left: 5px solid var(--ethereal-blue);
+    border-bottom: 5px solid var(--ethereal-blue);
+}
+
+.badge {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: bold;
+    padding: 3px 8px;
+    border-radius: 4px;
+    color: white;
+    margin-bottom: 10px;
+}
+
+.rate-up { background: #2ecc71; }
+.rate-trend { background: #e67e22; }
+
+.card h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    color: #7f8c8d;
+    margin-bottom: 5px;
+}
+
+.rate-value {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--dark-neutral);
+    margin-bottom: 5px;
+}
+
+.meta {
+    font-size: 13px;
+    color: #95a5a6;
+}
+
+/* Pied de page */
+.footer {
+    background-color: #ffffff;
+    padding: 35px 20px;
+    margin-top: 40px;
+    border-radius: 6px;
+    text-align: center;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.footer-author {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    font-size: 16px;
+    color: var(--dark-neutral);
+}
+
+.footer-role {
+    font-size: 13px;
+    color: #7f8c8d;
+    margin-bottom: 5px;
+}
+
+.footer-socials {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 15px 0;
+}
+
+.footer-socials a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    color: var(--dark-neutral);
+    background-color: #ffffff;
+    border: 2px solid var(--ethereal-blue);
+    border-radius: 50%;
+    font-size: 18px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.footer-socials a:hover {
+    background-color: var(--ethereal-blue);
+    color: var(--dark-neutral);
+    transform: translateY(-4px);
+    box-shadow: 0 4px 10px rgba(160, 212, 224, 0.4);
+}
+
+.footer-copyright {
+    font-size: 11px;
+    color: #95a5a6;
+    margin-top: 15px;
+}
+
+/* Écrans larges / Ordinateurs (À partir de 768px) */
+@media (min-width: 768px) {
+    body {
+        padding: 25px 50px;
+    }
+    
+    .hero h1 {
+        font-size: 36px;
+    }
+
+    .grid-container {
+        grid-template-columns: 1fr 1fr; /* Passage sur 2 colonnes pour PC */
+    }
+}
