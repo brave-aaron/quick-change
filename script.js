@@ -1,37 +1,51 @@
-// Taux de change fixes simulés en local (Projet 2)
-const localRates = {
-    EUR: { USD: 1.09, XOF: 655.96, EUR: 1 },
-    USD: { EUR: 0.92, XOF: 601.50, USD: 1 },
-    XOF: { EUR: 0.0015, USD: 0.0017, XOF: 1 }
-};
-
-// Sélection des éléments du DOM
 const convertBtn = document.getElementById('convertBtn');
 const amountInput = document.getElementById('amount');
 const fromCurrency = document.getElementById('fromCurrency');
 const toCurrency = document.getElementById('toCurrency');
 const resultText = document.getElementById('resultText');
 
-// Écoute de l'événement clic sur le bouton
-convertBtn.addEventListener('click', () => {
+convertBtn.addEventListener('click', async () => {
     const amount = parseFloat(amountInput.value);
     const from = fromCurrency.value;
     const to = toCurrency.value;
 
-    // Validation des données de saisie
+    // Validation côté client avant l'envoi
     if (isNaN(amount) || amount <= 0) {
         resultText.style.color = '#ff4d4d';
         resultText.textContent = "Veuillez entrer un montant valide.";
         return;
     }
 
-    // Réinitialisation de la couleur par défaut
     resultText.style.color = '';
+    resultText.textContent = "Traitement API en cours...";
 
-    // Récupération du taux correspondant et calcul
-    const rate = localRates[from][to];
-    const convertedAmount = (amount * rate).toFixed(2);
+    try {
+        // Envoi asynchrone vers l'endpoint RESTful /api/conversions
+        const response = await fetch('http://localhost:3000/api/conversions', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                amount: amount,
+                fromCurrency: from,
+                toCurrency: to
+            })
+        });
+        
+        if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.error || "Erreur lors du traitement");
+        }
+        
+        const data = await response.json();
 
-    // Affichage dynamique du résultat dans l'interface
-    resultText.textContent = `${amount} ${from} = ${convertedAmount} ${to}`;
+        // Affichage dynamique du résultat calculé par le serveur
+        resultText.textContent = `${data.amount} ${data.from} = ${data.result} ${data.to}`;
+
+    } catch (error) {
+        console.error(error);
+        resultText.style.color = '#ff4d4d';
+        resultText.textContent = `Erreur : ${error.message}`;
+    }
 });
