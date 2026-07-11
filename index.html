@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuickChange - Convertisseur de Devises</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="logo">Quick<span class="highlight">Change</span></div>
+        <nav class="nav-links">
+            <a href="#converter-section" class="nav-btn">Convertisseur</a>
+            <a href="#rates-section" class="nav-btn">Taux du jour</a>
+        </nav>
+    </header>
+
+    <main class="hero" id="converter-section">
+        <h1>Convertissez vos devises, en toute simplicité.</h1>
+        <p>Calculez instantanément vos conversions monétaires avec des taux mis à jour.</p>
+        
+        <div class="converter-box">
+            <div class="input-group">
+                <label for="amount">Montant</label>
+                <input type="number" id="amount" placeholder="Ex: 10000" value="100">
+            </div>
+
+            <div class="select-group">
+                <div class="control">
+                    <label for="fromCurrency">De</label>
+                    <select id="fromCurrency">
+                        <option value="EUR">EUR (€)</option>
+                        <option value="USD">USD ($)</option>
+                        <option value="XOF">XOF (CFA)</option>
+                    </select>
+                </div>
+                
+                <div class="control">
+                    <label for="toCurrency">Vers</label>
+                    <select id="toCurrency">
+                        <option value="XOF" selected>XOF (CFA)</option>
+                        <option value="EUR">EUR (€)</option>
+                        <option value="USD">USD ($)</option>
+                    </select>
+                </div>
+            </div>
+
+            <button class="btn" id="convertBtn">Convertir</button>
+            
+            <!-- Box de résultat contenant un exemple statique pour le Projet 1 -->
+            <div class="result-display" id="resultText">100 EUR = 65596 XOF</div>
+        </div>
+    </main>
+
+    <!-- Section des Taux du jour (Statique pour le Projet 1 - Remplie à la main) -->
+    <section class="grid-container" id="rates-section">
+        <div class="card">
+            <div class="badge rate-up">Stable</div>
+            <h3>1 EUR à XOF</h3>
+            <p class="rate-value">655.96 XOF</p>
+            <p class="meta">Taux officiel fixe de la zone Euro / CFA.</p>
+        </div>
+
+        <div class="card">
+            <div class="badge rate-trend">Fluctuant</div>
+            <h3>1 USD à XOF</h3>
+            <p class="rate-value">601.50 XOF</p>
+            <p class="meta">Mis à jour récemment. Sujet aux variations du marché.</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p class="footer-author">Ketevi Mensanh Aaron</p>
+            <p class="footer-role">Développeur Full Stack - Stagiaire DecodeLabs</p>
+            <div class="footer-socials">
+                <a href="https://github.com/brave-aaron" target="_blank" title="GitHub"><i class="fa-brands fa-github"></i></a>
+                <a href="mailto:ketevimensanhaaron@gmail.com" title="Email"><i class="fa-solid fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/mensanh-aaron-ketevi-b04312356/" target="_blank" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="#" title="Portfolio"><i class="fa-solid fa-briefcase"></i></a>
+            </div>
+            <p class="footer-copyright">&copy; 2026 QuickChange - Tous droits réservés.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
